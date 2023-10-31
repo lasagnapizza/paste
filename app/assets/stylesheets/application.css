@@ -1,0 +1,36 @@
+/*
+ *= require_tree .
+ *= require_self
+*/
+
+:root {
+  --bg: var(--flexoki-paper);
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --bg: var(--flexoki-black);
+  }
+} */
+
+body {
+  font-size: 16px;
+  background-color: var(--bg);
+}
+
+.container {
+  max-width: 630px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+textarea, input {
+  border: 1px solid var(--flexoki-300);
+  padding: 0.5rem;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+}
