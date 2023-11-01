@@ -11,10 +11,10 @@
 </div>
 
 <div class="data">
-  <%= link_to "edit", [:edit, @note] %> |
-  <%= link_to "new", root_path %> |
-  created at <%= @note.created_at.to_fs(:short) %> |
-  updated at <%= @note.updated_at.to_fs(:short) %> |
-  <%= @note.views %> views |
-  <%= link_to "what is this?", "/about" %>
+  <span><%= link_to "edit", [:edit, @note] %></span>
+  <span><%= link_to "new", root_path %></span>
+  <span>created at <%= @note.created_at.to_fs(:short) %></span>
+  <span>updated at <%= @note.updated_at.to_fs(:short) %></span>
+  <span><%= @note.views %> views</span>
+  <span><%= link_to "what is this?", "/about" %></span>
 </div>
