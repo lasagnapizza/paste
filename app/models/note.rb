@@ -4,10 +4,10 @@ class Note < ApplicationRecord
   has_secure_password
 
   validates :body, presence: true
-  validates :password, presence: true
-  validates :slug, presence: true, uniqueness: true
+  validates :slug, uniqueness: true
+  validates :password, length: (6..32)
 
-  before_validation :set_slug
+  before_create :set_slug
 
   def self.random_password
     ("a".."z").to_a.sample(12).join.scan(/.{1,4}/).join("-")

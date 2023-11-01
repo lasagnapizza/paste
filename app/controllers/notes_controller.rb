@@ -25,10 +25,15 @@ class NotesController < ApplicationController
 
   def update
     @note = Note.find_by!(slug: params[:id])
-    render :edit, status: :unprocessable_entity and return unless @note.authenticate(note_params[:password]) # xkcd 2347
+
+    unless @note.authenticate(note_params[:password]) # xkcd 2347
+      flash[:error] = "wrong password"
+      render :edit, status: :unprocessable_entity
+      return
+    end
 
     @note.assign_attributes(note_params.except(:password, :new_password))
-    @note.password = note_params[:new_password] if note_params[:new_password]
+    @note.password = note_params[:new_password] if note_params[:new_password].present?
 
     msg = "note updated"
     msg += ", the edit password is #{@note.password}" if @note.password

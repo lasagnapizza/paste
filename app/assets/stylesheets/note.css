@@ -1,4 +1,18 @@
+.error {
+  color: var(--bg);
+  background-color: var(--link-internal);
+  padding: 0.5rem;
+  font-size: 0.8rem;
+}
+
 .info {
+  color: var(--bg);
+  background-color: var(--link);
+  padding: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.data {
   color: var(--second-text);
   background-color: var(--second-bg);
   padding: 0.5rem;

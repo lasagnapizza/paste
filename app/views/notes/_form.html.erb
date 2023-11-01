@@ -1,4 +1,17 @@
 <%= form_for note, html: { class: "form" } do |f| %>
+  <% flash.each do |type, msg| %>
+    <div class="<%= type %>">
+      <%= msg %>
+    </div>
+  <% end %>
+
+  <% @note.errors.full_messages.each do |msg| %>
+    <div class="error">
+      <%= msg %>
+    </div>
+  <% end %>
+
+
   <div class="grow-wrap">
     <%= f.text_area :body, style: "display: none;", data: { controller: "editor", editor_target: "editor" } %>
   </div>
@@ -21,7 +34,7 @@
     <% end %>
     <div>
       <%= f.text_field :slug, placeholder: 'custom slug' %>
-      <span class="small">set a custom URL path</span>
+      <span class="small">set a custom URL slug</span>
     </div>
     <div>
       <%= f.submit "paste" %>

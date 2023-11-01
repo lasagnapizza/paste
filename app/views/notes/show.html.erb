@@ -10,8 +10,9 @@
   </div>
 </div>
 
-<div class="info">
+<div class="data">
   <%= link_to "edit", [:edit, @note] %> |
+  <%= link_to "new", root_path %> |
   created at <%= @note.created_at.to_fs(:short) %> |
   updated at <%= @note.updated_at.to_fs(:short) %> |
   <%= @note.views %> views |

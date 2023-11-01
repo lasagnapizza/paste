@@ -33,7 +33,7 @@ a {
   width: 100%;
   min-height: 100%;
   margin: 0 auto;
-  padding: 0.8rem 0;
+  padding: 0.8rem;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
@@ -64,13 +64,20 @@ a {
 }
 
 .small {
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   color: var(--second-text);
 }
 
 .form-tools {
   display: flex;
   gap: 0.8rem;
+}
+
+@media (max-width: 600px) {
+  .form-tools {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .form-tools > div {
@@ -83,6 +90,11 @@ a {
   color: var(--text);
   border: 1px solid var(--border);
   padding: 0.5rem;
+}
+
+.form-tools input + span {
+  display: block;
+  margin-top: 0.3rem;
 }
 
 .form-tools input[type=submit] {
