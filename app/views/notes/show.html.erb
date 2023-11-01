@@ -14,5 +14,6 @@
   <%= link_to "edit", [:edit, @note] %> |
   created at <%= @note.created_at.to_fs(:short) %> |
   updated at <%= @note.updated_at.to_fs(:short) %> |
-  <%= @note.views %> views
+  <%= @note.views %> views |
+  <%= link_to "what is this?", "/about" %>
 </div>
