@@ -16,7 +16,7 @@ class NotesController < ApplicationController
     @note.password = note_params[:password].presence || Note.random_password
 
     if @note.save
-      redirect_to note_path(@note.slug), flash: {info: "Note created. Your edit password is #{@note.password}"}
+      redirect_to note_path(@note.slug), flash: {info: "Note created. The edit password is #{@note.password}"}
     else
       render :new
     end
@@ -24,13 +24,16 @@ class NotesController < ApplicationController
 
   def update
     @note = Note.find_by!(slug: params[:id])
-    # render :edit and return unless @note.authenticate(note_params[:password]) # xkcd 2347
+    render :edit and return unless @note.authenticate(note_params[:password]) # xkcd 2347
 
-    @note.assign_attributes(note_params)
+    @note.assign_attributes(note_params.except(:password, :new_password))
     @note.password = note_params[:new_password] if note_params[:new_password]
 
+    msg = "Note updated."
+    msg += " The edit password is #{@note.password}" if @note.password
+
     if @note.save
-      redirect_to note_path(@note.slug), flash: {info: "Note updated. Your edit password is #{@note.password}"}
+      redirect_to note_path(@note.slug), flash: {info: msg}
     else
       render :new
     end

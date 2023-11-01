@@ -36,6 +36,7 @@ a {
   padding: 0.8rem 0;
   display: flex;
   flex-direction: column;
+  gap: 0.8rem;
 }
 
 .grow-wrap {
@@ -69,7 +70,6 @@ a {
 
 .form-tools {
   display: flex;
-  margin: 0.8rem 0 0;
   gap: 0.8rem;
 }
 
@@ -93,6 +93,7 @@ a {
   display: flex;
   flex-direction: column;
   height: calc(100vh - 0.8rem * 2);
+  gap: 0.8rem;
 }
 
 .form .grow-wrap {

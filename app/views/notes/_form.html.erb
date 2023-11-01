@@ -25,6 +25,7 @@
     </div>
     <div>
       <%= f.submit "paste" %>
+      <% if f.object.new_record? %><span class="small"><%= link_to "what is this?", "/about" %></span><% end %>
     </div>
   </div>
 <% end %>
