@@ -9,3 +9,10 @@
     <%= body_to_html(@note.body) %>
   </div>
 </div>
+
+<div class="info">
+  <%= link_to "edit", [:edit, @note] %> |
+  created at <%= @note.created_at.to_fs(:short) %> |
+  updated at <%= @note.updated_at.to_fs(:short) %> |
+  0 views
+</div>

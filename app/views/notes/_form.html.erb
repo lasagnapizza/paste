@@ -5,14 +5,26 @@
   <div class="form-tools">
     <div>
       <%= f.text_field :password, placeholder: 'edit password' %>
-      <span class="small">set one to edit later</span>
+      <span class="small">
+        <% if f.object.persisted? %>
+          will persist the edit
+        <% else %>
+          set one to edit later
+        <% end %>
+      </span>
     </div>
+    <% if f.object.persisted? %>
+      <div>
+        <%= f.text_field :new_password, placeholder: 'new edit password' %>
+        <span class="small">leave blank if unchanged</span>
+      </div>
+    <% end %>
     <div>
       <%= f.text_field :slug, placeholder: 'custom slug' %>
       <span class="small">set a custom URL path</span>
     </div>
     <div>
-      <%= f.submit "Paste" %>
+      <%= f.submit "paste" %>
     </div>
   </div>
 <% end %>

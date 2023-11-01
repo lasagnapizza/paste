@@ -1,3 +1,11 @@
+.info {
+  color: var(--second-text);
+  background-color: var(--second-bg);
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  margin-top: 0.8rem;
+}
+
 .note {
   border: 1px solid var(--border);
   background-color: var(--second-bg);

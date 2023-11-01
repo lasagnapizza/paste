@@ -20,15 +20,19 @@ export default class extends Controller {
         markdown({ codeLanguages: languages })
       ]
     })
-    const view = new EditorView({
+    this.editor = new EditorView({
       state: startState,
       parent: textarea,
     });
-    textarea.parentNode.insertBefore(view.dom, textarea);
+    textarea.parentNode.insertBefore(this.editor.dom, textarea);
     textarea.style.display = 'none';
     textarea.form.addEventListener('submit', (e) => {
-      textarea.value = view.state.doc.toString();
+      textarea.value = this.editor.state.doc.toString();
       if (!textarea.value) e.preventDefault();
     });
+  }
+
+  disconnect() {
+    this.editor.destroy()
   }
 }

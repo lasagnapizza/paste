@@ -11,6 +11,7 @@
   --third-bg: #323842;
   --text: #F6F7F9;
   --link: #61AFEF;
+  --link-internal: #E06C75;
   --second-text: #ABB2BF;
 }
 
@@ -23,18 +24,18 @@ body {
   color: var(--text);
 }
 
+a {
+  color: var(--link-internal);
+}
+
 .container {
   max-width: 720px;
   width: 100%;
   min-height: 100%;
   margin: 0 auto;
-  display: flex;
   padding: 0.8rem 0;
-}
-
-input {
-  border: 1px solid var(--border);
-  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .grow-wrap {
@@ -79,7 +80,9 @@ input {
 .form-tools input {
   width: 100%;
   background-color: var(--second-bg);
-  color: var(--text)
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 0.5rem;
 }
 
 .form-tools input[type=submit] {
@@ -89,6 +92,7 @@ input {
 .form {
   display: flex;
   flex-direction: column;
+  height: calc(100vh - 0.8rem * 2);
 }
 
 .form .grow-wrap {
