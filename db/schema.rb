@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_31_193226) do
     t.text "body", null: false
     t.string "slug", null: false
     t.string "password_digest", null: false
+    t.integer "views", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_notes_on_slug", unique: true

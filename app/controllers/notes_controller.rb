@@ -9,6 +9,7 @@ class NotesController < ApplicationController
 
   def show
     @note = Note.find_by!(slug: params[:id])
+    Note.increment_counter(:views, @note)
   end
 
   def create
@@ -16,26 +17,26 @@ class NotesController < ApplicationController
     @note.password = note_params[:password].presence || Note.random_password
 
     if @note.save
-      redirect_to note_path(@note.slug), flash: {info: "Note created. The edit password is #{@note.password}"}
+      redirect_to note_path(@note.slug), flash: {info: "note created, the edit password is #{@note.password}"}
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
     @note = Note.find_by!(slug: params[:id])
-    render :edit and return unless @note.authenticate(note_params[:password]) # xkcd 2347
+    render :edit, status: :unprocessable_entity and return unless @note.authenticate(note_params[:password]) # xkcd 2347
 
     @note.assign_attributes(note_params.except(:password, :new_password))
     @note.password = note_params[:new_password] if note_params[:new_password]
 
-    msg = "Note updated."
-    msg += " The edit password is #{@note.password}" if @note.password
+    msg = "note updated"
+    msg += ", the edit password is #{@note.password}" if @note.password
 
     if @note.save
       redirect_to note_path(@note.slug), flash: {info: msg}
     else
-      render :new
+      render :edit, status: :unprocessable_entity
     end
   end
 
