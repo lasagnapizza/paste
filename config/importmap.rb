@@ -145,5 +145,9 @@ pin "@lezer/python", to: "https://ga.jspm.io/npm:@lezer/python@1.1.9/dist/index.
 pin "@lezer/rust", to: "https://ga.jspm.io/npm:@lezer/rust@1.0.1/dist/index.js"
 pin "@lezer/sass", to: "https://ga.jspm.io/npm:@lezer/sass@1.0.3/dist/index.js"
 pin "@lezer/xml", to: "https://ga.jspm.io/npm:@lezer/xml@1.0.3/dist/index.js"
+pin "@codemirror/theme-one-dark", to: "https://ga.jspm.io/npm:@codemirror/theme-one-dark@6.1.2/dist/index.js"
+pin "@wcj/markdown-style", to: "https://ga.jspm.io/npm:@wcj/markdown-style@1.0.25/lib/index.js"
+pin "highlight.js", to: "https://ga.jspm.io/npm:highlight.js@11.9.0/es/index.js"
 
 pin_all_from "app/javascript/controllers", under: "controllers"
+pin "highlight.js/lib/common", to: "https://ga.jspm.io/npm:highlight.js@11.9.0/es/common.js"

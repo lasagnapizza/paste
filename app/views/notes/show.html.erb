@@ -1,1 +1,11 @@
-<%= body_to_html(@note.body) %>
+<div class="note">
+  <% flash.each do |type, msg| %>
+    <div class="alert-info">
+      <%= msg %>
+    </div>
+  <% end %>
+
+  <div class="markdown-body">
+    <%= body_to_html(@note.body) %>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+.note {
+  border: 1px solid var(--border);
+  background-color: var(--second-bg);
+  max-width: 100%;
+  word-wrap: break-word;
+  line-height: 1.5;
+  padding: 0.8rem;
+  flex: 1;
+}
+
+.note a {
+  color: var(--link);
+}
+
+.note p {
+  margin-block-start: 0.8rem;
+  margin-block-end: 0.8rem;
+}
+
+.note img {
+  border-style: none;
+  max-width: 100%;
+  box-sizing: content-box;
+}
+
+.note pre code {
+  overflow-x: auto;
+  display: block;
+  white-space: pre;
+  max-width: 100%;
+  min-width: 100px;
+  line-height: 1.75;
+  padding: 0.8rem;
+}

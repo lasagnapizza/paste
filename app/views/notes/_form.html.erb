@@ -1,15 +1,15 @@
-<%= form_for note do |f| %>
+<%= form_for note, html: { class: "form" } do |f| %>
   <div class="grow-wrap">
-    <%= f.text_area :body, style: "display: none;" %>
+    <%= f.text_area :body, style: "display: none;", data: { controller: "editor", editor_target: "editor" } %>
   </div>
   <div class="form-tools">
     <div>
       <%= f.text_field :password, placeholder: 'edit password' %>
-      <span class="small">(optional) set one to edit later</span>
+      <span class="small">set one to edit later</span>
     </div>
     <div>
       <%= f.text_field :slug, placeholder: 'custom slug' %>
-      <span class="small">(optional) set a custom URL path</span>
+      <span class="small">set a custom URL path</span>
     </div>
     <div>
       <%= f.submit "Paste" %>
