@@ -4,7 +4,8 @@ class Note < ApplicationRecord
   has_secure_password
 
   validates :body, presence: true
-  validates :slug, presence: true
+  validates :password, presence: true
+  validates :slug, presence: true, uniqueness: true
 
   before_validation :set_slug
 
