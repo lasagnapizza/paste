@@ -36,6 +36,8 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 # Final stage for app image
 FROM base
 
+LABEL org.opencontainers.image.source https://github.com/lasagnapizza/paste
+
 # Install packages needed for deployment
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl postgresql-client && \
