@@ -1,6 +1,6 @@
 .error {
   color: var(--bg);
-  background-color: var(--link-internal);
+  background-color: var(--error);
   padding: 0.5rem;
   font-size: 0.8rem;
 }

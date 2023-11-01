@@ -1,5 +1,4 @@
-body = %{
-# paste
+body = %{# paste
 
 paste is a simple markdown store, image pastebin but for markdown files, a few things to have in mind:
 
