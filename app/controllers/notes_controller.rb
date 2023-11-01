@@ -4,16 +4,16 @@ class NotesController < ApplicationController
   end
 
   def show
-    @note = Note.find_by!(slug: params[:slug])
+    @note = Note.find_by!(slug: params[:id])
   end
 
   def create
     @note = Note.new(note_params)
-    password = note_params[:password].presence || ('a'..'z').to_a.shuffle[0,8].join
-    @note.password = password
+    @note.password = note_params[:password].presence || Note.random_password
+    password = @note.password
 
     if @note.save
-      redirect_to note_path(slug: @note.slug), flash: { info: "Note created. Your edit password is #{password}" }
+      redirect_to note_path(@note.slug), flash: { info: "Note created. Your edit password is #{password}" }
     else
       render :new
     end

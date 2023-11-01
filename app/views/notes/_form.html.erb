@@ -1,8 +1,18 @@
 <%= form_for note do |f| %>
   <div class="grow-wrap">
-    <%= f.text_area :body, oninput: "this.parentNode.dataset.replicatedValue = this.value" %>
+    <%= f.text_area :body, style: "display: none;" %>
   </div>
-  <%= f.text_field :password, placeholder: 'Edit password' %>
-  <%= f.text_field :slug, placeholder: 'URL' %>
-  <%= f.submit %>
+  <div class="form-tools">
+    <div>
+      <%= f.text_field :password, placeholder: 'edit password' %>
+      <span class="small">(optional) set one to edit later</span>
+    </div>
+    <div>
+      <%= f.text_field :slug, placeholder: 'custom slug' %>
+      <span class="small">(optional) set a custom URL path</span>
+    </div>
+    <div>
+      <%= f.submit "Paste" %>
+    </div>
+  </div>
 <% end %>

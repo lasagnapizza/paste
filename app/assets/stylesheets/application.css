@@ -3,8 +3,14 @@
  *= require_self
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+
 :root {
   --bg: var(--flexoki-paper);
+  --second-bg: var(--flexoki-50);
+  --text: var(--flexoki-black);
+  --second-text: var(--flexoki-300);
+  --border: var(--flexoki-200);
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -14,23 +20,60 @@
 } */
 
 body {
+  height: calc(100dvh);
+  max-height: calc(100dvh);
+  font-family: 'Inconsolata', monospace;
   font-size: 16px;
   background-color: var(--bg);
+  color: var(--text);
 }
 
 .container {
+  height: 100%;
   max-width: 630px;
   width: 100%;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 0.8rem;
+  display: flex;
 }
 
-textarea, input {
-  border: 1px solid var(--flexoki-300);
+input {
+  border: 1px solid var(--border);
   padding: 0.5rem;
 }
 
-textarea {
+.cm-editor {
+  border: 1px solid var(--border);
+  background-color: var(--second-bg);
   width: 100%;
+  height: 500px;
   resize: none;
+  outline: none;
+}
+
+.cm-editor.cm-focused {
+  outline: none;
+}
+
+.cm-editor .cm-content {
+  font-family: 'Inconsolata', monospace;
+}
+
+.small {
+  font-size: 0.65rem;
+  color: var(--second-text);
+}
+
+.form-tools {
+  display: flex;
+  margin: 0.8rem 0 0;
+  gap: 0.8rem;
+}
+
+.form-tools > div {
+  flex: 1;
+}
+
+.form-tools input {
+  width: 100%;
 }
