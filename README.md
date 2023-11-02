@@ -2,6 +2,10 @@
 
 **paste** is a **simple markdown store**, like pastebin but it **renders as markdown**.
 
+Live instance [paste.lasagna.pizza](https://paste.lasagna.pizza)
+
+Example [paste.lasagna.pizza/example](https://paste.lasagna.pizza/example)
+
 ![A screenshot of the paste app](public/preview.png)
 
 
