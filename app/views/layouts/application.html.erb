@@ -2,16 +2,26 @@
 <html>
   <head>
     <% if @noindex %><meta name="robots" content="noindex"><% end %>
+
     <title><%= content_for?(:title) ? "~/paste/#{yield(:title)}" : "~/paste" %></title>
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="title" content="paste - simple markdown pastebin">
     <meta name="description" content="simple markdown store similar to pastebin">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://paste.lasanga.pizza/">
+    <meta property="og:url" content="https://paste.lasanga.pizza">
     <meta property="og:title" content="paste - simple markdown pastebin">
     <meta property="og:description" content="simple markdown store similar to pastebin">
+    <meta property="og:image" content="https://paste.lasanga.pizza/social-preview-image.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://paste.lasanga.pizza">
+    <meta property="twitter:title" content="paste - simple markdown pastebin">
+    <meta property="twitter:description" content="simple markdown store similar to pastebin">
+    <meta property="twitter:image" content="https://paste.lasanga.pizza/social-preview-image.png">
+
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
