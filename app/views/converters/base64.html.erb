@@ -1,0 +1,17 @@
+<% content_for :title, 'base64' %>
+
+<div class="wrap">
+  <div class="converters" data-controller="base64">
+    <div class="box">
+      <textarea data-base64-target="input" data-action="base64#convert"></textarea>
+    </div>
+    <div class="box">
+      <textarea data-base64-target="output" data-action="base64#convertBack"></textarea>
+    </div>
+  <div>
+
+  <div class="data">
+    <span>base64 decoder & encoder</span>
+    <span><%= link_to "what is this?", "/about" %></span>
+  </div>
+<div>

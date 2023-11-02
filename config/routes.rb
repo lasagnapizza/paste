@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   root "notes#new"
 
+  get '/base64', to: "converters#base64", as: :base64
+
   resources :notes, except: [:index], path: "/"
 end
