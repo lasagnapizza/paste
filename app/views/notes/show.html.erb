@@ -13,8 +13,8 @@
 </div>
 
 <div class="data">
-  <span><%= link_to "edit", [:edit, @note] %></span>
   <span><%= link_to "new", root_path %></span>
+  <span><%= link_to "edit", [:edit, @note] %></span>
   <span>created at <%= @note.created_at.to_fs(:short) %></span>
   <span>updated at <%= @note.updated_at.to_fs(:short) %></span>
   <span><%= @note.views %> views</span>
