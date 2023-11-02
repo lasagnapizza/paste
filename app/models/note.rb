@@ -5,8 +5,8 @@ class Note < ApplicationRecord
 
   validates :body, presence: true
   validates :slug, uniqueness: true
-  validates :password, length: (6..32), on: :create
-  validates :password, length: (6..32), allow_blank: true, on: :update
+  validates :password, length: (3..32), on: :create
+  validates :password, length: (3..32), allow_blank: true, on: :update
 
   before_create :set_slug
 

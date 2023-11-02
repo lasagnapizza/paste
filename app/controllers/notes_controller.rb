@@ -34,7 +34,7 @@ class NotesController < ApplicationController
       return
     end
 
-    @note.assign_attributes(note_params.only(:body, :slug))
+    @note.assign_attributes(note_params.slice(:body, :slug))
     @note.password = note_params[:new_password] if note_params[:new_password].present?
 
     msg = "note updated"
