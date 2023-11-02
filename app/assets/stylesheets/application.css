@@ -36,13 +36,20 @@ a {
   margin: 0 auto;
   padding: 0.8rem;
   display: flex;
+  gap: 0.8rem;
+}
+
+.wrap {
+  display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 0.8rem;
 }
 
 .grow-wrap {
   border: 1px solid var(--border);
   background-color: var(--second-bg);
+  flex: 1;
 }
 
 .cm-editor {
@@ -100,15 +107,4 @@ a {
 
 .form-tools input[type=submit] {
   cursor: pointer;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100dvh - 0.8rem * 2);
-  gap: 0.8rem;
-}
-
-.form .grow-wrap {
-  flex: 1;
 }

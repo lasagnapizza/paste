@@ -1,4 +1,4 @@
-<%= form_for note, html: { class: "form" } do |f| %>
+<%= form_for note, html: { class: "wrap" } do |f| %>
   <% flash.each do |type, msg| %>
     <div class="<%= type %>">
       <%= msg %>
@@ -15,6 +15,7 @@
   <div class="grow-wrap">
     <%= f.text_area :body, style: "display: none;", data: { controller: "editor", editor_target: "editor" } %>
   </div>
+
   <div class="form-tools">
     <div>
       <%= f.text_field :password, placeholder: 'edit password' %>

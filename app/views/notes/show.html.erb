@@ -1,22 +1,24 @@
 <% content_for :title, @note.slug %>
 
-<% flash.each do |type, msg| %>
-  <div class="info">
-    <%= msg %>
-  </div>
-<% end %>
+<div class="wrap">
+  <% flash.each do |type, msg| %>
+    <div class="info">
+      <%= msg %>
+    </div>
+  <% end %>
 
-<div class="note">
-  <div class="markdown-body">
-    <%= body_to_html(@note.body) %>
+  <div class="note">
+    <div class="markdown-body">
+      <%= body_to_html(@note.body) %>
+    </div>
   </div>
-</div>
 
-<div class="data">
-  <span><%= link_to "new", root_path %></span>
-  <span><%= link_to "edit", [:edit, @note] %></span>
-  <span>created at <%= @note.created_at.to_fs(:short) %></span>
-  <span>updated at <%= @note.updated_at.to_fs(:short) %></span>
-  <span><%= @note.views %> views</span>
-  <span><%= link_to "what is this?", "/about" %></span>
+  <div class="data">
+    <span><%= link_to "new", root_path %></span>
+    <span><%= link_to "edit", [:edit, @note] %></span>
+    <span>created at <%= @note.created_at.to_fs(:short) %></span>
+    <span>updated at <%= @note.updated_at.to_fs(:short) %></span>
+    <span><%= @note.views %> views</span>
+    <span><%= link_to "what is this?", "/about" %></span>
+  </div>
 </div>
