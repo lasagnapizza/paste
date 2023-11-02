@@ -8,7 +8,6 @@ export default class extends Controller {
   }
 
   convert() {
-    console.log('convert')
     try {
       this.outputTarget.value = atob(this.inputTarget.value);
     } catch {
@@ -17,7 +16,6 @@ export default class extends Controller {
   }
 
   convertBack() {
-    console.log('convertBack')
     try {
       this.inputTarget.value = btoa(this.outputTarget.value);
     } catch {
