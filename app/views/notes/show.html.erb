@@ -1,3 +1,5 @@
+<% content_for :title, @note.slug %>
+
 <% flash.each do |type, msg| %>
   <div class="info">
     <%= msg %>

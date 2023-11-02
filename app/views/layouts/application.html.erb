@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>~/paste</title>
+    <% if @noindex %><meta name="robots" content="noindex"><% end %>
+    <title><%= content_for?(:title) ? "~/paste/#{yield(:title)}" : "~/paste" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="title" content="paste - simple markdown pastebin">
     <meta name="description" content="simple markdown store similar to pastebin">
@@ -9,8 +10,6 @@
     <meta property="og:url" content="https://paste.lasanga.pizza/">
     <meta property="og:title" content="paste - simple markdown pastebin">
     <meta property="og:description" content="simple markdown store similar to pastebin">
-    <meta property="og:image" content="https://paste.lasanga.pizza/social-preview-image.png">
-    <meta name="robots" content="noindex">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 

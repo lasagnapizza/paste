@@ -8,6 +8,8 @@ class NotesController < ApplicationController
   end
 
   def show
+    @noindex = true
+
     @note = Note.find_by!(slug: params[:id])
     Note.increment_counter(:views, @note)
   end
