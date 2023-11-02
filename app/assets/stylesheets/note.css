@@ -1,24 +1,24 @@
 .error {
   color: var(--bg);
   background-color: var(--error);
-  padding: 0.5rem;
+  padding: 0.8rem;
   font-size: 0.8rem;
 }
 
 .info {
   color: var(--bg);
   background-color: var(--link);
-  padding: 0.5rem;
+  padding: 0.8rem;
   font-size: 0.8rem;
 }
 
 .data {
   color: var(--second-text);
   background-color: var(--second-bg);
-  padding: 0.5rem;
+  padding: 0.8rem;
   font-size: 0.8rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .note {
