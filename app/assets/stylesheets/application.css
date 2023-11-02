@@ -18,7 +18,6 @@
 
 body {
   height: calc(100dvh);
-  max-height: calc(100dvh);
   font-family: 'Inconsolata', monospace;
   font-size: 14px;
   background-color: var(--bg);
