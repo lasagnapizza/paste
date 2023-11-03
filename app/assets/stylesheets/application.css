@@ -38,36 +38,34 @@ a {
   gap: 0.8rem;
 }
 
-.wrap {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 0.8rem;
-}
-
 .grow-wrap {
   border: 1px solid var(--border);
   background-color: var(--second-bg);
   flex: 1;
 }
 
-.cm-editor {
-  width: 100%;
-  max-width: 100%;
-  height: 100%;
-  max-height: 100%;
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  flex: 1;
+}
 
-  resize: none;
+.wrap .box {
+  flex: 1;
   background-color: var(--second-bg);
 }
 
-.cm-editor .cm-content {
+.wrap textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  border: none;
+  padding: 0.8rem;
+  color: var(--text);
+  resize: none;
+  background-color: var(--second-bg);
   font-family: 'Inconsolata', monospace;
-  padding: 0.8rem 0;
-}
-
-.cm-editor .cm-line {
-  padding: 0 0.8rem;
 }
 
 .small {
@@ -75,35 +73,25 @@ a {
   color: var(--second-text);
 }
 
-.form-tools {
-  display: flex;
-  gap: 0.8rem;
+.error {
+  color: var(--bg);
+  background-color: var(--error);
+  padding: 0.8rem;
+  font-size: 0.8rem;
 }
 
-@media (max-width: 600px) {
-  .form-tools {
-    display: flex;
-    flex-direction: column;
-  }
+.info {
+  color: var(--bg);
+  background-color: var(--link);
+  padding: 0.8rem;
+  font-size: 0.8rem;
 }
 
-.form-tools > div {
-  flex: 1;
-}
-
-.form-tools input {
-  width: 100%;
+.data {
+  color: var(--second-text);
   background-color: var(--second-bg);
-  color: var(--text);
-  border: 1px solid var(--border);
-  padding: 0.5rem;
-}
-
-.form-tools input + span {
-  display: block;
-  margin-top: 0.3rem;
-}
-
-.form-tools input[type=submit] {
-  cursor: pointer;
+  padding: 0.8rem;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
 }

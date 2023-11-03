@@ -1,3 +1,8 @@
+/*
+  Grabbed and modded from sindresorhus/github-markdown-css
+  https://github.com/sindresorhus/github-markdown-css/blob/main/github-markdown.css
+*/
+
 .markdown-body {
   --color-prettylights-syntax-comment: #8b949e;
   --color-prettylights-syntax-constant: #79c0ff;
