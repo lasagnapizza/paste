@@ -7,12 +7,18 @@
 
 .converters .box {
   flex: 1;
-  background-color: var(--second-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.converters .box label {
+  display: block;
+  background-color: var(--third-bg);
+  padding: 0.3rem;
 }
 
 .converters textarea {
-  width: 100%;
-  height: 100%;
+  flex: 1;
   resize: none;
   border: none;
   padding: 0.8rem;

@@ -3,10 +3,12 @@
 <div class="wrap">
   <div class="converters" data-controller="base64">
     <div class="box">
-      <textarea data-base64-target="input" data-action="base64#convert"></textarea>
+      <label class="small" for="input">Input</label>
+      <textarea id="input" data-base64-target="input" data-action="base64#convert"></textarea>
     </div>
     <div class="box">
-      <textarea data-base64-target="output" data-action="base64#convertBack"></textarea>
+      <label class="small" for="output">Output</label>
+      <textarea id="output" data-base64-target="output" data-action="base64#convertBack"></textarea>
     </div>
   <div>
 

@@ -1,0 +1,19 @@
+<% content_for :title, 'html2haml' %>
+
+<div class="wrap">
+  <div class="converters" data-controller="html2haml">
+    <div class="box">
+      <label class="small" for="input">Input</label>
+      <textarea id="input" data-html2haml-target="input" data-action="html2haml#convert"></textarea>
+    </div>
+    <div class="box">
+      <label class="small" for="output">Output</label>
+      <textarea id="output" data-html2haml-target="output" data-action="click->html2haml#selectAll" readonly></textarea>
+    </div>
+  <div>
+
+  <div class="data">
+    <span>html to haml converter</span>
+    <span><%= link_to "what is this?", "/about" %></span>
+  </div>
+<div>
