@@ -79,6 +79,8 @@ GEM
     base64 (0.2.0)
     bcrypt (3.1.19)
     bigdecimal (3.1.4)
+    bootsnap (1.17.0)
+      msgpack (~> 1.2)
     builder (3.2.4)
     commonmarker (1.0.0.pre11-x86_64-linux)
     concurrent-ruby (1.2.2)
@@ -125,6 +127,7 @@ GEM
     marcel (1.0.2)
     mini_mime (1.1.5)
     minitest (5.20.0)
+    msgpack (1.7.2)
     mutex_m (0.2.0)
     net-imap (0.4.4)
       date
@@ -259,6 +262,7 @@ PLATFORMS
 DEPENDENCIES
   adjective_adjective_animal (~> 0.1.0)
   bcrypt (~> 3.1)
+  bootsnap
   commonmarker (~> 1.0.0.pre11)
   debug
   html2haml (~> 2.3)
