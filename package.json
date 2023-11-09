@@ -1,0 +1,17 @@
+{
+  "name": "app",
+  "private": "true",
+  "dependencies": {
+    "@codemirror/lang-markdown": "^6.2.2",
+    "@codemirror/language-data": "^6.3.1",
+    "@codemirror/theme-one-dark": "^6.1.2",
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^7.3.0",
+    "codemirror": "^6.0.1",
+    "esbuild": "^0.19.5",
+    "highlight.js": "^11.9.0"
+  },
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets  --splitting --format=esm"
+  }
+}

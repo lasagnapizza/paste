@@ -19,8 +19,6 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 
 gem "turbo-rails", "~> 1.5"
 
-gem "importmap-rails", "~> 1.2"
-
 gem "commonmarker", "~> 1.0.0.pre11"
 
 gem "bcrypt", "~> 3.1"
@@ -30,6 +28,8 @@ gem "stimulus-rails", "~> 1.3"
 gem "adjective_adjective_animal", "~> 0.1.0"
 
 gem "html2haml", "~> 2.3"
+
+gem "jsbundling-rails", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
