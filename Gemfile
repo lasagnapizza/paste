@@ -17,7 +17,7 @@ gem "puma", ">= 5.0"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[windows jruby]
 
-gem "turbo-rails", "~> 1.5"
+gem "turbo-rails", "~> 2.0", ">= 2.0.5"
 
 gem "commonmarker", "~> 1.0.0.pre11"
 
@@ -31,7 +31,7 @@ gem "html2haml", "~> 2.3"
 
 gem "jsbundling-rails", "~> 1.2"
 
-gem 'bootsnap', require: false
+gem "bootsnap", require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
