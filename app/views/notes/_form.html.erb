@@ -18,7 +18,7 @@
 
   <div class="form-tools">
     <div>
-      <%= f.text_field :password, placeholder: 'edit password' %>
+      <%= f.text_field :password, placeholder: 'edit password', autocomplete: "off" %>
       <span class="small">
         <% if f.object.persisted? %>
           will persist the edit
@@ -29,12 +29,12 @@
     </div>
     <% if f.object.persisted? %>
       <div>
-        <%= f.text_field :new_password, placeholder: 'new edit password' %>
+        <%= f.text_field :new_password, placeholder: 'new edit password', autocomplete: "off" %>
         <span class="small">leave blank if unchanged</span>
       </div>
     <% end %>
     <div>
-      <%= f.text_field :slug, placeholder: 'custom slug' %>
+      <%= f.text_field :slug, placeholder: 'custom slug', autocomplete: "off" %>
       <span class="small">set a custom URL slug</span>
     </div>
     <div>
