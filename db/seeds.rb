@@ -67,4 +67,4 @@ Horizontal rule:
 
 ---
 }
-Note.create(body:, slug: "example", password: Note.random_password)
+Note.create(body:, slug: "example", password: "nice")

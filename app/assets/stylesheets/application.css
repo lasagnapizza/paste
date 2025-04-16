@@ -49,6 +49,7 @@ a {
   border: 1px solid var(--border);
   background-color: var(--second-bg);
   flex: 1;
+  position: relative;
 }
 
 .cm-editor {
@@ -106,4 +107,17 @@ a {
 
 .form-tools input[type=submit] {
   cursor: pointer;
+}
+
+.toggle-preview {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  border: 0;
+  background-color: var(--third-bg);
+  color: var(--text);
+  padding: 0.3rem 0.3rem;
+  cursor: pointer;
+  font-size: 0.8rem;
 }

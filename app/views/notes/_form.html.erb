@@ -12,8 +12,12 @@
   <% end %>
 
 
-  <div class="grow-wrap">
-    <%= f.text_area :body, style: "display: none;", data: { controller: "editor", editor_target: "editor" } %>
+  <div class="grow-wrap" data-controller="editor">
+    <button class="toggle-preview" data-action="editor#togglePreview" type="button">preview</button>
+    <div style="display: contents;" data-editor-target="wrapper">
+      <%= f.text_area :body, style: "display: none;", data: { editor_target: "editor" } %>
+    </div>
+    <div class="note markdown-body" style="display: none;" data-editor-target="preview"></div>
   </div>
 
   <div class="form-tools">
