@@ -4,10 +4,90 @@ on:
   push:
     branches:
       - "master"
+    paths-ignore:
+      - "**/*.md"
+      - "LICENSE"
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      - name: Lint code for consistent style
+        run: bin/bundle exec standardrb
+
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:14
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/paste_test
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      # the test task builds the bundle through jsbundling-rails
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      - name: Install JavaScript dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Prepare test database
+        run: bin/rails db:test:prepare
+
+      - name: Run tests
+        run: bin/rails test
+
+      - name: Run system tests
+        run: bin/rails test:system
+
+      - name: Keep failed system test screenshots
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: screenshots
+          path: tmp/screenshots
+          if-no-files-found: ignore
+
   docker:
     runs-on: ubuntu-latest
+    needs: [lint, test]
+    concurrency:
+      group: ${{ github.workflow }}
+      cancel-in-progress: true
     steps:
       - name: Check out code
         uses: actions/checkout@v3
