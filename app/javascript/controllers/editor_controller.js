@@ -5,7 +5,6 @@ import { EditorState } from '@codemirror/state';
 import { markdown } from "@codemirror/lang-markdown"
 import { languages } from "@codemirror/language-data"
 import { oneDark } from "@codemirror/theme-one-dark"
-import { Converter } from "showdown";
 
 export default class extends Controller {
   static targets = ['editor', 'preview', 'wrapper']
@@ -33,20 +32,33 @@ export default class extends Controller {
     });
   }
 
-  togglePreview() {
+  async togglePreview() {
     const preview = this.previewTarget;
 
     if (preview.style.display === "none") {
-      const converter = new Converter();
-      const text = this.editor.state.doc.toString();
-      preview.innerHTML = converter.makeHtml(text);
+      preview.textContent = "rendering…";
       preview.style.display = "block";
       this.wrapperTarget.style.display = "none";
+      preview.innerHTML = await this.renderMarkdown(this.editor.state.doc.toString());
     } else {
       preview.innerHTML = "";
       preview.style.display = "none";
       this.wrapperTarget.style.display = "block";
     }
+  }
+
+  // Rendered server-side so the preview is byte-identical to the saved note.
+  async renderMarkdown(body) {
+    const token = document.querySelector('meta[name="csrf-token"]')?.content;
+    const response = await fetch("/preview", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "X-CSRF-Token": token },
+      body: JSON.stringify({ body }),
+    });
+
+    if (!response.ok) return "<p>preview failed</p>";
+
+    return await response.text();
   }
 
   disconnect() {

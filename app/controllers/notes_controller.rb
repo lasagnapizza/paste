@@ -1,4 +1,6 @@
 class NotesController < ApplicationController
+  MAX_PREVIEW_BYTES = 1_000_000
+
   before_action :set_note, only: [:edit, :show, :update]
 
   def new
@@ -11,6 +13,11 @@ class NotesController < ApplicationController
   def show
     @noindex = true
     Note.increment_counter(:views, @note)
+  end
+
+  def preview
+    body = params[:body].to_s.first(MAX_PREVIEW_BYTES)
+    render html: helpers.body_to_html(body), layout: false
   end
 
   def create
