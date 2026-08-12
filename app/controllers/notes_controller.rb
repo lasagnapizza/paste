@@ -16,7 +16,9 @@ class NotesController < ApplicationController
   end
 
   def preview
-    body = params[:body].to_s.first(MAX_PREVIEW_BYTES)
+    # commonmarker rejects anything that isn't valid UTF-8, including the
+    # US-ASCII empty string params gives us when :body is missing
+    body = params[:body].to_s.dup.force_encoding(Encoding::UTF_8).scrub.first(MAX_PREVIEW_BYTES)
     render html: helpers.body_to_html(body), layout: false
   end
 
