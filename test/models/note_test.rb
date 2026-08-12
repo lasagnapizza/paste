@@ -13,8 +13,8 @@ class NoteTest < ActiveSupport::TestCase
   end
 
   test "generate slug if not present" do
-    note = Note.new(body: "This is a sample note", slug: "")
-    note.validate
+    note = Note.new(body: "This is a sample note", slug: "", password: "123")
+    note.save!
     assert note.slug.present?
   end
 

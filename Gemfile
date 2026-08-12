@@ -38,6 +38,14 @@ group :development, :test do
   gem "debug", platforms: %i[mri windows]
 
   gem "standard", "~> 1.31"
+
+  # minitest 6 drops the arity rails 7.1 line filtering relies on
+  gem "minitest", "~> 5.25"
+end
+
+group :test do
+  gem "capybara"
+  gem "selenium-webdriver"
 end
 
 group :development do
