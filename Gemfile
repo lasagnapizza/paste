@@ -38,6 +38,7 @@ group :development, :test do
   gem "debug", platforms: %i[mri windows]
 
   gem "standard", "~> 1.31"
+  gem "brakeman", require: false
 
   # minitest 6 drops the arity rails 7.1 line filtering relies on
   gem "minitest", "~> 5.25"

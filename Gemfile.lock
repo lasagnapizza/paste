@@ -88,6 +88,8 @@ GEM
     bigdecimal (4.1.2)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
+    brakeman (8.0.5)
+      racc
     builder (3.3.0)
     capybara (3.40.0)
       addressable
@@ -293,6 +295,7 @@ DEPENDENCIES
   adjective_adjective_animal (~> 0.1.0)
   bcrypt (~> 3.1)
   bootsnap
+  brakeman
   capybara
   commonmarker (~> 1.0.0.pre11)
   debug

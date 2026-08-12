@@ -9,6 +9,47 @@ on:
       - "LICENSE"
 
 jobs:
+  scan_ruby:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+          bundler-cache: true
+
+      # EOLRails is excluded because rails 7.1 went end of life on 2025-10-01
+      # and flags on every run; drop the flag once the upgrade lands
+      - name: Scan for common Rails security vulnerabilities using static analysis
+        run: bin/brakeman --no-pager --except EOLRails
+
+  scan_js:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      # yarn 1 ignores --level when setting its exit status, so mask the code
+      # ourselves: it is a bitmask, 8 is high and 16 is critical
+      - name: Scan for security vulnerabilities in JavaScript dependencies
+        run: |
+          yarn audit --groups dependencies || audit=$?
+          if [ $(( ${audit:-0} & 24 )) -ne 0 ]; then
+            echo "::error::high or critical advisory in a runtime dependency"
+            exit 1
+          fi
+
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -84,7 +125,7 @@ jobs:
 
   docker:
     runs-on: ubuntu-latest
-    needs: [lint, test]
+    needs: [scan_ruby, scan_js, lint, test]
     concurrency:
       group: ${{ github.workflow }}
       cancel-in-progress: true
