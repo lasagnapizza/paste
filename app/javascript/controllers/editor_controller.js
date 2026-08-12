@@ -3,6 +3,8 @@ import { Controller } from "@hotwired/stimulus"
 import { minimalSetup, EditorView } from "codemirror"
 import { EditorState } from '@codemirror/state';
 import { markdown } from "@codemirror/lang-markdown"
+// Every mode in language-data is behind a dynamic import, so the build splits
+// them into chunks that only load when a fenced block names that language.
 import { languages } from "@codemirror/language-data"
 import { oneDark } from "@codemirror/theme-one-dark"
 

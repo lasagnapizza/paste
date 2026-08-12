@@ -1,0 +1,89 @@
+#!/usr/bin/env node
+
+// Bundles app/javascript into public/builds, outside the sprockets pipeline.
+//
+// Code splitting is what keeps the bundle small: @codemirror/language-data
+// reaches ~100 language modes through dynamic imports, and without splitting
+// esbuild inlines every one of them into the entrypoint. Splitting emits them
+// as separate chunks the browser only fetches when a fenced code block asks
+// for that language. Those chunk URLs are baked into the JS at build time, so
+// they have to be reachable at a fixed path -- sprockets digests filenames,
+// which is why this writes to public/ and hashes the names itself.
+
+const esbuild = require("esbuild")
+const fs = require("fs")
+const path = require("path")
+
+const root = path.resolve(__dirname, "..")
+const outdir = path.join(root, "public", "builds")
+const watch = process.argv.includes("--watch")
+
+const options = {
+  entryPoints: [path.join(root, "app/javascript/application.js")],
+  bundle: true,
+  splitting: true,
+  format: "esm",
+  minify: true,
+  target: "es2020",
+  sourcemap: "external",
+  entryNames: "[name]-[hash]",
+  chunkNames: "chunk-[hash]",
+  publicPath: "/builds",
+  metafile: true,
+  outdir,
+}
+
+// The digest lands in the filename, so the entrypoint's real name is only known
+// after the build. Record it for JavascriptHelper#javascript_bundle_tag.
+function writeManifest(result) {
+  const entries = {}
+
+  // Splitting turns every dynamically imported module into its own entryPoint
+  // in the metafile, so match against the entrypoints we actually configured.
+  const wanted = new Set(options.entryPoints.map((entry) => path.relative(root, entry)))
+
+  for (const [file, output] of Object.entries(result.metafile.outputs)) {
+    if (!wanted.has(output.entryPoint)) continue
+    const name = path.basename(output.entryPoint, path.extname(output.entryPoint))
+    entries[`${name}.js`] = `/${path.relative(path.join(root, "public"), path.join(root, file))}`
+  }
+
+  fs.writeFileSync(path.join(outdir, "manifest.json"), JSON.stringify(entries, null, 2))
+  return entries
+}
+
+// Hashed names mean every build leaves the previous one behind.
+function clean() {
+  fs.rmSync(outdir, { recursive: true, force: true })
+  fs.mkdirSync(outdir, { recursive: true })
+}
+
+async function main() {
+  clean()
+
+  if (watch) {
+    const context = await esbuild.context({
+      ...options,
+      plugins: [{
+        name: "manifest",
+        setup(build) {
+          build.onEnd((result) => {
+            if (result.errors.length) return
+            console.log("built", Object.values(writeManifest(result)).join(" "))
+          })
+        },
+      }],
+    })
+    await context.watch()
+    return
+  }
+
+  const result = await esbuild.build(options)
+  const entries = writeManifest(result)
+  console.log("built", Object.values(entries).join(" "))
+}
+
+main().catch((error) => {
+  console.error(error)
+  process.exit(1)
+})

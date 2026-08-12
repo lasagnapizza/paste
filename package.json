@@ -25,6 +25,6 @@
     "@lezer/lr": "^1.4.0"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets"
+    "build": "node bin/build-js"
   }
 }
